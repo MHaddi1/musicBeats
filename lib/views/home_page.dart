@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
+//import 'package:google_fonts/google_fonts.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 import 'package:song_app/consts/colors.dart';
 import 'package:song_app/consts/text_style.dart';
@@ -16,23 +16,24 @@ class HomePage extends StatelessWidget {
     return Scaffold(
         backgroundColor: bgDarkColor,
         appBar: AppBar(
-            backgroundColor: bgDarkColor,
-            leading: const Icon(
-              Icons.sort_rounded,
-              color: whiteColor,
-            ),
-            actions: [
-              IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.search,
-                    color: whiteColor,
-                  ))
-            ],
-            title: ourStyle(
-                family: GoogleFonts.openSansTextTheme(),
-                color: whiteColor,
-                size: 18)),
+          backgroundColor: bgDarkColor,
+          leading: const Icon(
+            Icons.sort_rounded,
+            color: whiteColor,
+          ),
+          actions: [
+            IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.search,
+                  color: whiteColor,
+                ))
+          ],
+          title: Text(
+            "Beats",
+            style: ourStyle(size: 18, color: whiteColor, family: 'bold'),
+          ),
+        ),
         body: FutureBuilder<List<SongModel>>(
             future: controller.audioQuery.querySongs(
                 ignoreCase: true,
@@ -92,9 +93,14 @@ class HomePage extends StatelessWidget {
                                       )
                                     : null,
                                 onTap: () {
-                                  Get.to(() => const Player());
-                                  // controller.playSong(
-                                  //     snapshot.data![index].uri, index);
+                                  Get.to(
+                                    () => Player(
+                                      data: snapshot.data![index],
+                                    ),
+                                    transition: Transition.downToUp,
+                                  );
+                                  controller.playSong(
+                                      snapshot.data![index].uri, index);
                                 },
                               ),
                             ));
