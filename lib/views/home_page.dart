@@ -5,6 +5,7 @@ import 'package:on_audio_query/on_audio_query.dart';
 import 'package:song_app/consts/colors.dart';
 import 'package:song_app/consts/text_style.dart';
 import 'package:song_app/controllers/player_controller.dart';
+import 'package:song_app/views/player.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -82,7 +83,8 @@ class HomePage extends StatelessWidget {
                                     size: 32,
                                   ),
                                 ),
-                                trailing: controller.playindex.value == index && controller.isPlaying.value
+                                trailing: controller.playindex.value == index &&
+                                        controller.isPlaying.value
                                     ? const Icon(
                                         Icons.play_arrow,
                                         color: whiteColor,
@@ -90,8 +92,9 @@ class HomePage extends StatelessWidget {
                                       )
                                     : null,
                                 onTap: () {
-                                  controller.playSong(
-                                      snapshot.data![index].uri, index);
+                                  Get.to(() => const Player());
+                                  // controller.playSong(
+                                  //     snapshot.data![index].uri, index);
                                 },
                               ),
                             ));
