@@ -1,12 +1,13 @@
+import 'package:beats/consts/colors.dart';
+import 'package:beats/consts/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:on_audio_query/on_audio_query.dart';
-//import 'package:google_fonts/google_fonts.dart';
-import 'package:song_app/consts/colors.dart';
-import 'package:song_app/consts/text_style.dart';
-import 'package:song_app/controllers/player_controller.dart';
+
+import '../controllers/player_controller.dart';
+
 
 class Player extends StatelessWidget {
   final List<SongModel> data;

@@ -1,11 +1,12 @@
+import 'package:beats/consts/colors.dart';
+import 'package:beats/consts/text_style.dart';
+import 'package:beats/controllers/player_controller.dart';
+import 'package:beats/views/player.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 //import 'package:google_fonts/google_fonts.dart';
 import 'package:on_audio_query/on_audio_query.dart';
-import 'package:song_app/consts/colors.dart';
-import 'package:song_app/consts/text_style.dart';
-import 'package:song_app/controllers/player_controller.dart';
-import 'package:song_app/views/player.dart';
+
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
