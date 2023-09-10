@@ -48,40 +48,51 @@ class HomePage extends StatelessWidget {
               } else {
                 //print(snapshot.data);
                 return Padding(
-                  
                   padding: const EdgeInsets.all(8.0),
                   child: ListView.builder(
                       shrinkWrap: true,
                       physics: const BouncingScrollPhysics(),
-                      itemCount: 15,
+                      itemCount: snapshot.data!.length,
                       itemBuilder: (BuildContext context, int index) {
                         return Container(
                             margin: const EdgeInsets.only(bottom: 4.0),
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(12.0)),
-                            child: ListTile(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(12.0)),
-                              tileColor: bgColor,
-                              title:  Text(
-                                snapshot.data![index].displayName,
-                                style: const TextStyle(
-                                    fontSize: 15.0, color: whiteColor),
-                              ),
-                              subtitle:  Text(
-                                "${snapshot.data![index].artist}",
-                                style: const TextStyle(
-                                    fontSize: 15.0, color: whiteColor),
-                              ),
-                              leading: const Icon(
-                                Icons.music_note,
-                                color: whiteColor,
-                                size: 32,
-                              ),
-                              trailing: const Icon(
-                                Icons.play_arrow,
-                                color: whiteColor,
-                                size: 26.0,
+                            child: Obx(
+                              () => ListTile(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(12.0)),
+                                tileColor: bgColor,
+                                title: Text(
+                                  snapshot.data![index].displayName,
+                                  style: const TextStyle(
+                                      fontSize: 15.0, color: whiteColor),
+                                ),
+                                subtitle: Text(
+                                  "${snapshot.data![index].artist}",
+                                  style: const TextStyle(
+                                      fontSize: 15.0, color: whiteColor),
+                                ),
+                                leading: QueryArtworkWidget(
+                                  id: snapshot.data![index].id,
+                                  type: ArtworkType.AUDIO,
+                                  nullArtworkWidget: const Icon(
+                                    Icons.music_note,
+                                    color: whiteColor,
+                                    size: 32,
+                                  ),
+                                ),
+                                trailing: controller.playindex.value == index && controller.isPlaying.value
+                                    ? const Icon(
+                                        Icons.play_arrow,
+                                        color: whiteColor,
+                                        size: 26.0,
+                                      )
+                                    : null,
+                                onTap: () {
+                                  controller.playSong(
+                                      snapshot.data![index].uri, index);
+                                },
                               ),
                             ));
                       }),
