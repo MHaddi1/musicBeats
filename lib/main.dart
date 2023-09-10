@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 //import 'package:google_fonts/google_fonts.dart';
 import 'package:song_app/views/home_page.dart';
 
@@ -11,12 +12,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Beats',
       theme: ThemeData(
           //textTheme: GoogleFonts,
-        appBarTheme: const AppBarTheme(
+          appBarTheme: const AppBarTheme(
         backgroundColor: Colors.transparent,
         elevation: 0,
       )),
